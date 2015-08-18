@@ -40,12 +40,14 @@ void main() {
         	prev = curr;
         }
 
-        if( dir && (res_str.length != 0) ) {
-        	res_str = "IN ORDER"
-        } else {
-        	res_str = "REVERSE ORDER"
+        if( res_str.length != 0 ){
+        	if( dir ) {
+	        	res_str = "IN ORDER";
+	        } else if( {
+	        	res_str = "REVERSE ORDER";
+	        }
         }
 
-        printf("%s\n", res_str);
+        printf( "%s\n", res_str );
     }
 }
