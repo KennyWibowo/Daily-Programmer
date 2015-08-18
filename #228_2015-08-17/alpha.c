@@ -8,11 +8,11 @@ void main() {
     while( TRUE ) {
         printf( "\n Insert query string: " );
         
-        int prev = getchar(), dir = 0;
+        int prev = getchar(), dir = 0, curr;
 
        	char *res_str;
 
-        while( ( int curr = getchar() ) != '\n' && curr != EOF ) {
+        while( curr != '\n' && curr != EOF ) {
 
         	if( dir == 0 ) {
         		if( prev < curr )
