@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<string.h>
 
 #define TRUE  1
 #define FALSE 0
@@ -11,9 +10,9 @@ void main() {
         
         int prev = getchar(), dir = 0;
 
-       	char res_str[];
+       	char *res_str;
 
-        while( ( curr = getchar() ) != '\n' && ch != EOF ) {
+        while( ( int curr = getchar() ) != '\n' && curr != EOF ) {
 
         	if( dir == 0 ) {
         		if( prev < curr )
@@ -40,10 +39,10 @@ void main() {
         	prev = curr;
         }
 
-        if( res_str.length != 0 ){
+        if( sizeof(res_str) != 0 ){
         	if( dir ) {
 	        	res_str = "IN ORDER";
-	        } else if( {
+	        } else {
 	        	res_str = "REVERSE ORDER";
 	        }
         }
