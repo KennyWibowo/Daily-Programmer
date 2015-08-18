@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 
 #define TRUE  1
 #define FALSE 0
@@ -6,16 +7,18 @@
 void main(int argc, char *argv[]) {
     
     if (argc < 2) {
-    	printf("Error: expected one argument");
+    	printf("Error: expected one argument\n");
     	return;
     }
 
-    int dir = 0, i = 0;
+int dir = 0, *i, len = sizeof(argv[1]);
    	char *res_str;
 
-    for (i = 0; i < argv[1].length-1; ++i) {
-    	int prev = argv[1][i];
-    	int curr = argv[1][i+1];
+    for (i = 0; i < len; ++i) {
+    	int *prev = *argv[1]+i;
+    	int *curr = *argv[1]+i+1;
+
+    	printf("%n, %n", prev, curr);
 
     	if( dir == 0 ) {
     		if( prev < curr )
