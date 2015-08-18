@@ -14,6 +14,8 @@ void main() {
 
         while( curr != '\n' && curr != EOF ) {
 
+        	curr = getchar();
+
         	if( dir == 0 ) {
         		if( prev < curr )
         			dir = 1;
