@@ -3,52 +3,51 @@
 #define TRUE  1
 #define FALSE 0
 
-void main() {
-
-    while( TRUE ) {
-        printf( "\n Insert query string: " );
-        
-        int prev = getchar(), dir = 0, curr;
-
-       	char *res_str;
-
-        while( curr != '\n' && curr != EOF ) {
-
-        	curr = getchar();
-
-        	if( dir == 0 ) {
-        		if( prev < curr )
-        			dir = 1;
-        		else if( prev > curr )
-        			dir = -1;
-        	}
-
-        	if( dir != 0 ) {
-        		if( dir ) {
-        			if( prev > curr ) {
-        				res_str = "NOT IN ORDER";
-        				break;
-        			}
-        				
-        		} else {
-        			if( prev < curr ) {
-        				res_str = "NOT IN ORDER";
-        				break;
-        			}
-        		}
-        	}
-
-        	prev = curr;
-        }
-
-        if( sizeof(res_str) != 0 ){
-        	if( dir ) {
-	        	res_str = "IN ORDER";
-	        } else {
-	        	res_str = "REVERSE ORDER";
-	        }
-        }
-
-        printf( "%s\n", res_str );
+void main(int argc, char *argv[]) {
+    
+    if (argc < 2) {
+    	printf("Error: expected one argument");
+    	return;
     }
+
+    int dir = 0, i = 0;
+   	char *res_str;
+
+    for (i = 0; i < argv[1].length-1; ++i) {
+    	int prev = argv[1][i];
+    	int curr = argv[1][i+1];
+
+    	if( dir == 0 ) {
+    		if( prev < curr )
+    			dir = 1;
+    		else if( prev > curr )
+    			dir = -1;
+    	}
+
+    	if( dir != 0 ) {
+    		if( dir ) {
+    			if( prev > curr ) {
+    				res_str = "NOT IN ORDER";
+    				break;
+    			}
+    				
+    		} else {
+    			if( prev < curr ) {
+    				res_str = "NOT IN ORDER";
+    				break;
+    			}
+    		}
+    	}
+    }
+
+    if( res_str != "NOT IN ORDER" ){
+    	if( dir ) {
+        	res_str = "IN ORDER";
+        } else {
+        	res_str = "REVERSE ORDER";
+        }
+    }
+
+    printf( "%s\n", res_str );
+
 }
