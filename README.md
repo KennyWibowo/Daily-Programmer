@@ -1,4 +1,4 @@
-# /r/DailyProgrammer Solutions #
+# [/r/DailyProgrammer](http://reddit.com/r/dailyprogrammer) Solutions #
 
 Created in C and JavaScript by Kenny Wibowo
 
