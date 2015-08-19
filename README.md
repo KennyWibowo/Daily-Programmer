@@ -1,4 +1,4 @@
-# Project Euler Solutions #
+# /r/DailyProgrammer Solutions #
 
 Created in C and JavaScript by Kenny Wibowo
 
