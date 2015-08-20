@@ -1,4 +1,4 @@
-# [\[2015-08-19\] Challenge #228 \[Intermediate\] Use a Web Service to Find Bitcoin Prices](hhttps://www.reddit.com/r/dailyprogrammer/comments/3hj4o2/20150819_challenge_228_intermediate_use_a_web/) #
+# [\[2015-08-19\] Challenge #228 \[Intermediate\] Use a Web Service to Find Bitcoin Prices](https://www.reddit.com/r/dailyprogrammer/comments/3hj4o2/20150819_challenge_228_intermediate_use_a_web/) #
 
 Created in JavaScript/Node by Kenny Wibowo
 
