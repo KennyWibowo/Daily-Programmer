@@ -1,10 +1,11 @@
 {
-  "name": "restify",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./restify.js"
-  },
-  "dependencies": {
-  }
+    "name": "restify",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./restify.js"
+    },
+    "dependencies": {
+        "node-rest-client" : "~1.5.1"
+    }
 }
