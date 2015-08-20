@@ -30,7 +30,8 @@ rest_client.get("http://api.bitcoincharts.com/v1/trades.csv?symbol=rockUSD",
                 console.log("Error: " + response.statusCode 
                             + " " + response.statusMessage);    
             } else {
-                console.log("Error: 200 OK, but server came back with no data");
+                console.log("Error: 200 OK, but server "
+                    + " came back with no data");
             }
         }
     }
