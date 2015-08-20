@@ -17,5 +17,5 @@ int testWords( char *secret_word, char *test_word ) {
     
     char *test_builder = malloc( sizeof(*secret_word) );
 
-    //TODO: free test_builder, for loop to actually compare
+    free( *test_builder );
 }
