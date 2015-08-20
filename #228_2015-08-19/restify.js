@@ -3,9 +3,19 @@ var Client = require('node-rest-client').Client;
 var rest_client = new Client();
 
 rest_client.get("http://api.bitcoincharts.com/v1/trades.csv?symbol=rockUSD", function(data, response) {
-	console.log("Data: ");
+	var parsed_payload = parsepayload(String(data));
 
-	console.log(parsepayload(String(data)));
+	var newest_time = parsed_payload[0][0];
+	var newest_time_pos = 0;
+
+	for(var i = 1; i < parsed_payload.length; ++i) {
+		if(newest_time < parsed_payload[i][0]) {
+			newest_time = parsed_payload[i][0];
+			newest_time_pos = i;
+		}
+	}
+
+	console.log("Current bitcoin valued at: $" +  Math.round(parsed_payload[newest_time_pos][1]*100)/100);
 })
 
 function parsepayload(payload) {
@@ -14,7 +24,7 @@ function parsepayload(payload) {
 	while(payload.length != 0) {
 		var iter = 0, currchar = payload.charAt(iter);
 
-		while((payload.length != iter.length) && (currchar != '\n') ){
+		while((payload.length != iter) && (currchar != '\n') ){
 			currchar = payload.charAt(++iter);
 		}
 			
@@ -24,10 +34,8 @@ function parsepayload(payload) {
 		if( currchar == '\n' )
 			payload = replaceRange(payload, 0, 1); //get rid of new line
 
-		console.log("Data length: " + data.length);
 	}
 	
-	console.log(done);
 	return data;
 }
 
@@ -46,7 +54,6 @@ function parsepayloadline(line) {
 		if(currchar == ',')
 			line  = replaceRange(line, 0,1) // get rid of comma
 
-		console.log("Linedata :" + linedata);
 	}
 
 	return linedata;
