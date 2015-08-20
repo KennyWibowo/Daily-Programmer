@@ -27,7 +27,8 @@ rest_client.get("http://api.bitcoincharts.com/v1/trades.csv?symbol=rockUSD",
                   // Format float to two decimal places
         } else {
             if(response.statusCode != '200') {
-                console.log("Error: " + response.statusCode + " " + response.statusMessage);    
+                console.log("Error: " + response.statusCode 
+                            + " " + response.statusMessage);    
             } else {
                 console.log("Error: 200 OK, but server came back with no data");
             }
