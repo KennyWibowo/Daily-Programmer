@@ -1,0 +1,15 @@
+# Logs
+\#228_2015-08-19/logs
+\#228_2015-08-19/*.log
+\#228_2015-08-19/npm-debug.log*
+
+# Runtime data
+\#228_2015-08-19/pids
+\#228_2015-08-19/*.pid
+\#228_2015-08-19/*.seed
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+\#228_2015-08-19/build/Release
+
+# Dependency directory
+\#228_2015-08-19/node_modules
