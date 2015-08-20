@@ -5,23 +5,33 @@ var rest_client = new Client();
 // sends a GET to the rest API
 rest_client.get("http://api.bitcoincharts.com/v1/trades.csv?symbol=rockUSD", 
     function(data, response) {
-        // parse the resultant payload
-        var parsed_payload = parsePayload(String(data));
 
-        // Finds the latest data line from the server (probably not needed)
-        var newest_time = parsed_payload[0][0];
-        var newest_time_pos = 0;
-        for(var i = 1; i < parsed_payload.length; ++i) {
-            if(newest_time < parsed_payload[i][0]) {
-                newest_time = parsed_payload[i][0];
-                newest_time_pos = i;
+        // Run parser only if server comes back ok with data
+        if(response.statusCode == '200' && data && data.length > 0) {
+            // parse the resultant payload
+            var parsed_payload = parsePayload(String(data));
+
+            // Finds the latest data line from the server (probably not needed)
+            var newest_time = parsed_payload[0][0];
+            var newest_time_pos = 0;
+            for(var i = 1; i < parsed_payload.length; ++i) {
+                if(newest_time < parsed_payload[i][0]) {
+                    newest_time = parsed_payload[i][0];
+                    newest_time_pos = i;
+                }
+            }
+
+            // Output the latest bitcoin-to-USD price
+            console.log("One bitcoin currently valued at $" 
+                + Math.round(parsed_payload[newest_time_pos][1]*100)/100);
+                  // Format float to two decimal places
+        } else {
+            if(response.statusCode != '200') {
+                console.log("Error: " + response.statusCode + " " + response.statusMessage);    
+            } else {
+                console.log("Error: 200 OK, but server came back with no data");
             }
         }
-
-        // Output the latest bitcoin-to-USD price
-        console.log("One bitcoin currently valued at $" 
-            + Math.round(parsed_payload[newest_time_pos][1]*100)/100);
-              // Format float to two decimal places
     }
 );
 
