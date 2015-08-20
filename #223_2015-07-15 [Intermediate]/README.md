@@ -1,4 +1,4 @@
-# [\[2015-08-19\] Challenge #228 \[Easy\] Letters in Alphabetical Order](https://www.reddit.com/r/dailyprogrammer/comments/3h9pde/20150817_challenge_228_easy_letters_in/) #
+# [\[2015-07-15\] Challenge #223 \[Intermediate\] Eel of Fortune](https://www.reddit.com/r/dailyprogrammer/comments/3ddpms/20150715_challenge_223_intermediate_eel_of_fortune/) #
 
 Created in C by Kenny Wibowo
 
