@@ -7,6 +7,10 @@ Done!
 
 ## Running ##
 
+Please install dependencies first by running the following line:
+
+	npm install
+
 Run the following line to see the current price of bitcoin in USD:
 
 	node restify.js
