@@ -19,7 +19,7 @@ rest_client.get("http://api.bitcoincharts.com/v1/trades.csv?symbol=rockUSD",
         }
 
         // Output the latest bitcoin-to-USD price
-        console.log("Current bitcoin valued at: $" 
+        console.log("One bitcoin currently valued at $" 
             + Math.round(parsed_payload[newest_time_pos][1]*100)/100);
               // Format float to two decimal places
     }
@@ -70,7 +70,7 @@ function parsePayloadLine(line) {
             currchar = line.charAt(++iter);
 
         // slice the element and add resultant element to linedata
-        linedata.push(line.slice(0, iter);
+        linedata.push(line.slice(0, iter));
         line = removeRange(line, 0, iter); // remove the extracted element
 
         if(currchar == ',')
