@@ -8,7 +8,7 @@ rest_client.get("http://api.bitcoincharts.com/v1/trades.csv?symbol=rockUSD", fun
 	console.log(parsepayload(String(data)));
 })
 
-function parsepayload(payload, next) {
+function parsepayload(payload) {
 	var data = [];
 
 	while(payload.length != 0) {
@@ -19,32 +19,39 @@ function parsepayload(payload, next) {
 		}
 			
 		data.push(parsepayloadline(payload.slice(0, iter)))
+		payload = replaceRange(payload, 0, iter);
 
 		if( currchar == '\n' )
-			payload.slice(0, 1); //get rid of new line
+			payload = replaceRange(payload, 0, 1); //get rid of new line
 
-		console.log("Data: " + data);
+		console.log("Data length: " + data.length);
 	}
 	
-	next(data);
+	console.log(done);
 	return data;
 }
 
-function parsepayloadline(line, next) {
+function parsepayloadline(line) {
 	var linedata = [];
 
 	while(line.length != 0){
 		var iter = 0, currchar = line.charAt(iter);
 
-		while(currchar != ',')
+		while((currchar != ',') && (iter != line.length))
 			currchar = line.charAt(++iter);
 
 		linedata.push(line.slice(0, iter))
+		line = replaceRange(line, 0, iter);
 
 		if(currchar == ',')
-			line.slice(0,1) // get rid of comma
+			line  = replaceRange(line, 0,1) // get rid of comma
+
+		console.log("Linedata :" + linedata);
 	}
 
-	next(linedata);
 	return linedata;
+}
+
+function replaceRange(s, start, end) {
+    return s.substring(0, start) + s.substring(end);
 }
