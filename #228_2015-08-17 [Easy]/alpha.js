@@ -15,25 +15,33 @@ if(process.argv.length < 3){
 // Returns: Message determining if word is "IN ORDER", "NOT IN ORDER", or "REVERSE ORDER"
 function testWord(word) {
 
-    // One character test
-    if(word.length == 1) {
-        return "IN ORDER";
-    }
+    var j=1;
 
     // Test first two characters to determine direction
-    var prev = word.charCodeAt(0);
-    var curr = word.charCodeAt(1);
+    // Skips over characters until characters are different
+    for(var i=0; prev==curr && j < word.length; i++, j++) {
+        var prev = word.charCodeAt(i);
+        var curr = word.charCodeAt(j);
+    }
 
-    var direction = prev < curr ? "forward" : "backward"; // Note: but what if it's the same letter?
+    // If all characters in word are the same!
+    if(j == word.length) {
+        return "BOTH IN ORDER AND REVERSE ORDER";
+    }
+    
+    // Determine direction to keep up with
+    var direction = prev < curr ? "forward" : "backward";
 
     prev = curr;
 
+    // Iterate through all the characters
     for(var i=2; i<word.length; i++) {
         var curr = word.charCodeAt(i);
 
+        // Determine current direction
         var thisDir = prev < curr ? "forward" : "backward";
 
-        // if it's not in order, oh well
+        // if it's not in order, oh no!
         if(curr != prev && thisDir != direction) {
             direction = "oh noes!";
             break;
