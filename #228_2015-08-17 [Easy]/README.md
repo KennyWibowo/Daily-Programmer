@@ -3,7 +3,7 @@
 Created in JavaScript/C by Kenny Wibowo
 
 ## STATUS ##
-Not done
+Done in JS!
 
 ## Running in C ##
 
@@ -13,18 +13,18 @@ Run the following line to first compile the C project
 
 Then, run the following to see the output
 
-	./alpha.out
+	./alpha.out [query]
 
 ## Running in JavaScript ##
 
 Run the following to see the output
 
-	node alpha.js
+	node alpha.js [query]
 
 
 ## TODOs ##
 
 - [ ] Fix syntax errors regarding pointers in C: re-learn dereferencing
 - [x] Finish JS implementation
-- [ ] Find out why "derp" doesn't work for JS
-- [ ] Add comments
+- [x] Find out why "derp" doesn't work for JS
+- [x] Add comments
