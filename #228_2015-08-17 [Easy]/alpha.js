@@ -2,7 +2,16 @@ if(process.argv.length < 3){
     console.log('Expected one argument');
 } else {
     var word = process.argv[2];
-    
+
+    console.log(testWord(word));
+}
+
+function testWord(word) {
+
+    if(word.length == 1) {
+        return "IN ORDER";
+    }
+
     var prev = word.charCodeAt(0);
     var curr = word.charCodeAt(1);
 
@@ -19,6 +28,8 @@ if(process.argv.length < 3){
             direction = "oh noes!";
             break;
         }
+
+        prev = curr;
     }
 
     var message = (direction == "forward" || direction == "oh noes!") ? "IN ORDER" : "REVERSE ORDER"
@@ -27,5 +38,5 @@ if(process.argv.length < 3){
         message = "NOT ".concat(message);
     }
 
-    console.log(message);
+    return message;
 }
