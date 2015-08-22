@@ -25,5 +25,6 @@ Run the following to see the output
 ## TODOs ##
 
 - [ ] Fix syntax errors regarding pointers in C: re-learn dereferencing
-- [ ] Finish JS implementation
+- [x] Finish JS implementation
+- [ ] Find out why "derp" doesn't work for JS
 - [ ] Add comments
