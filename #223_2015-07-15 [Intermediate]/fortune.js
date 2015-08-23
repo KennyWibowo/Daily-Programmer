@@ -12,8 +12,8 @@ if(process.argv.length < 4){
 function queryOffense(word_puzzle, word_offense) {
 	var iter_query = 0;
 
-	for(var i =0; i < word_puzzle.length; i++) {
-		if(word_puzzle.charAt(i) == word_offense.charAt(iter_query))
+	for(var i =0; i < word_offense.length; i++) {
+
 			iter_query++;
 	}
 
@@ -21,4 +21,13 @@ function queryOffense(word_puzzle, word_offense) {
 		return true;
 
 	return false;
+}
+
+function getUniqueChars(word) {
+	var chars = [];
+	for(var i=0 ; i<word.length; i++) 
+		if(!chars.includes(word.charAt(i)))
+			chars.push(word.charAt(i));
+
+	return chars;
 }
