@@ -1,6 +1,6 @@
 # [\[2015-07-15\] Challenge #223 \[Intermediate\] Eel of Fortune](https://www.reddit.com/r/dailyprogrammer/comments/3ddpms/20150715_challenge_223_intermediate_eel_of_fortune/) #
 
-Created in C by Kenny Wibowo
+Created in C and JavaScript by Kenny Wibowo
 
 ## STATUS ##
 JavaScript is Done!
