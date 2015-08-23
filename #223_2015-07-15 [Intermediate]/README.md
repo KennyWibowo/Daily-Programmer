@@ -3,7 +3,7 @@
 Created in C by Kenny Wibowo
 
 ## STATUS ##
-Not done
+JavaScript is Done!
 
 ## Running in C ##
 
@@ -13,7 +13,13 @@ Run the following line to first compile the C project
 
 Then, run the following to see the output
 
-	./fortune.out
+	./fortune.out [word1] [word2]
+
+## Running in JavaScript ##
+
+Run the following line:
+
+	node fortune.js [word1] [word2]
 
 ## TODOs ##
 
