@@ -3,15 +3,17 @@
 Created in JavaScript by Kenny Wibowo
 
 ## STATUS ##
-Work-In-Progress
+Complete!
 
 ## Running in JavaScript ##
 
 Run the following to see the output
 
-	node dottie.js [query]
+	node dottie.js [number]
 
 
 ## TODOs ##
 
-- [ ] Startup implementation of program
+- [x] Startup working implementation of program
+- [ ] Create comments
+- [ ] Think of more elegant solution
