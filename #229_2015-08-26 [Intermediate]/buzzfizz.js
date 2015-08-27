@@ -1,14 +1,16 @@
 if (process.argv.length < 3) {
-  console.log('Usage: node ' + process.argv[1] + ' FILENAME');
-  process.exit(1);
+    console.log('Usage: node ' + process.argv[1] + ' FILENAME');
+    process.exit(1);
 }
 
 var fs = require('fs'), filename = process.argv[2];
 
 fs.readFile(filename, 'utf8', function(err, filedata) {
-  if (err) throw err;
+    if (err) throw err;
 
-
+    parseFileData(filedata, function(data) {
+        console.log(data);
+    });
 });
 
 function parseFileData(filedata, next) {
@@ -19,6 +21,12 @@ function parseFileData(filedata, next) {
         if(currchar == "\n") {
             data.push(filedata.substring(pos, i));
             pos = i+1;
+        } else if (currchar == "\r") {
+            data.push(filedata.substring(pos, i));
+            pos = i+2;
+            i++;
         }
     }
+
+    next(data);
 }
