@@ -10,7 +10,7 @@ public class Fortune {
 		String word_puzzle = args[0];
 		String word_offense = args[1];
 
-		HashMap<Character, Integer> letters = parseWord( word_offense );
+		LinkedHashMap<Character, Integer> letters = parseWord( word_offense );
 
 		char stringbuilder[] = new char[word_puzzle.length()];
 
@@ -25,8 +25,8 @@ public class Fortune {
 		
 	}
 
-	private static HashMap<Character, Integer> parseWord ( String word ) {
-		HashMap<Character, Integer> letters = new HashMap<Character, Integer>();
+	private static LinkedHashMap<Character, Integer> parseWord ( String word ) {
+		LinkedHashMap<Character, Integer> letters = new LinkedHashMap<Character, Integer>();
 
 		for(int i=0; i<word.length(); i++) {
 			letters.put(word.charAt(i), 0);
@@ -34,4 +34,3 @@ public class Fortune {
 
 		return letters;
 	}
-}
