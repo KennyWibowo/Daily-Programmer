@@ -1,11 +1,12 @@
 # [/r/DailyProgrammer](http://reddit.com/r/dailyprogrammer) Solutions #
 
-Created in C and JavaScript by Kenny Wibowo
+Created in C, JavaScript, and Java by Kenny Wibowo
 
 ## Dependencies ##
 
 Requires the following to compile/run:
 
+	java/javac
 	node
 	gcc
 
