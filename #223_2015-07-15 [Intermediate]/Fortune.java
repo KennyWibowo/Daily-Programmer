@@ -12,17 +12,24 @@ public class Fortune {
 
 		LinkedHashMap<Character, Integer> letters = parseWord( word_offense );
 
-		char stringbuilder[] = new char[word_puzzle.length()];
+		ArrayList<Character> stringbuilder = new ArrayList<Character>(word_puzzle.length());
 
 		for(char letter : letters.keySet()) {
 			for(int i=0; i<word_puzzle.length(); i++) {
 				if(word_puzzle.charAt(i) == letter) {
-					stringbuilder[i] = letter;
+					stringbuilder.add(i, letter);
 				}
 			}
 		}
 
-		
+		// Remove nulls
+		for(int i=0; i<stringbuilder.length(); i++) {
+			if(stringbuilder.get(i) == null) {
+				stringbuilder.remove(i--);
+			}
+		}
+
+		System.out.println(listContains(stringbuilder, word_offense));
 	}
 
 	private static LinkedHashMap<Character, Integer> parseWord ( String word ) {
