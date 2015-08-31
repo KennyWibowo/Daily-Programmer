@@ -34,7 +34,7 @@ public class Fortune {
 			}
 		}
 
-		System.out.println(listContains(stringbuilder, word_offense));
+		System.out.println( listContains( stringbuilder, word_offense ) );
 	}
 
 	private static LinkedHashMap<Character, Integer> parseWord ( String word ) {
@@ -46,3 +46,23 @@ public class Fortune {
 
 		return letters;
 	}
+
+	private static boolean listContains( ArrayList<Character> query, String word_offense ) {
+
+		for( int i = 0; i<query.size(); i++ ) {
+			if( query.get( i ) == word_offense.charAt( 0 ) ) {
+				i++;
+				for( int j = 1; j<word_offense.length() && i<query.size(); j++, i++ ) {
+					if( query.get( i ) != word_offense.charAt( j ) ){
+						break;
+					} else if( j == word_offense.length() - 1 ) {
+						return true;
+					}
+				}
+
+			}
+		}
+
+		return false;
+	}
+}
