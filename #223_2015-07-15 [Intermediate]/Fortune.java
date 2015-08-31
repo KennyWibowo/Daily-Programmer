@@ -14,6 +14,15 @@ public class Fortune {
 
 		char stringbuilder[] = new char[word_puzzle.length()];
 
+		for(char letter : letters.keySet()) {
+			for(int i=0; i<word_puzzle.length(); i++) {
+				if(word_puzzle.charAt(i) == letter) {
+					stringbuilder[i] = letter;
+				}
+			}
+		}
+
+		
 	}
 
 	private static HashMap<Character, Integer> parseWord ( String word ) {
