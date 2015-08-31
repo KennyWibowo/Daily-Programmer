@@ -13,3 +13,6 @@
 
 # Dependency directory
 */node_modules/
+
+# Java binaries
+*/*.class
