@@ -23,7 +23,7 @@ public class Fortune {
 		}
 
 		// Remove nulls
-		for(int i=0; i<stringbuilder.length(); i++) {
+		for(int i=0; i<stringbuilder.size(); i++) {
 			if(stringbuilder.get(i) == null) {
 				stringbuilder.remove(i--);
 			}
