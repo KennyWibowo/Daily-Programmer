@@ -12,12 +12,17 @@ public class Fortune {
 
 		LinkedHashMap<Character, Integer> letters = parseWord( word_offense );
 
-		ArrayList<Character> stringbuilder = new ArrayList<Character>(word_puzzle.length());
+		ArrayList<Character> stringbuilder = new ArrayList<Character>();
 
-		for(char letter : letters.keySet()) {
-			for(int i=0; i<word_puzzle.length(); i++) {
-				if(word_puzzle.charAt(i) == letter) {
-					stringbuilder.add(i, letter);
+		// Populate the string builder with nulls
+		for( int i = 0; i < word_puzzle.length(); i++ ) {
+			stringbuilder.add( null );
+		}
+
+		for( char letter : letters.keySet() ) {
+			for( int i = 0; i < word_puzzle.length(); i++ ) {
+				if( word_puzzle.charAt( i ) == letter ) {
+					stringbuilder.set( i, letter );
 				}
 			}
 		}
