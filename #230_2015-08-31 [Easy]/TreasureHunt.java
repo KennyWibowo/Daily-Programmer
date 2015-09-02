@@ -18,6 +18,7 @@ public class TreasureHunt {
 
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
@@ -42,22 +43,30 @@ public class TreasureHunt {
 
 		boolean skipBracket = false;
 		boolean skipBrace = false;
-		int prevpos = pos;
+		boolean first = true;
 
 		for(int j=pos; j>=0; j--) {
 			if(json.charAt(j) == '[') {
 				if(!skipBracket) {
 					// Handle array
-					message = parseArr(json, prevpos) + " -> " + message;
-					prevpos = pos;
+					if(message == "")
+						message = "" + parseArr(json, pos);
+					else
+						message = parseArr(json, pos) + " -> " + message;
+
+					pos = j;
 				} else {
 					skipBracket = false;
 				}
 			} else if(json.charAt(j) == '{') {
 				if(!skipBrace) {
 					// Handle object
-					message = parseKey(json, prevpos) + " -> " + message;
-					prevpos = pos;
+					if(message == "")
+						message = "" + parseKey(json, pos);
+					else
+						message = parseKey(json, pos) + " -> " + message;
+
+					pos = j;
 				} else {
 					skipBrace = false;
 				}
@@ -80,7 +89,7 @@ public class TreasureHunt {
 		while(json.charAt(pos) != '"') pos--;
 		int end = pos;
 
-		return json.substring(end, start+1);
+		return json.substring(end+1, start);
 	}
 
 	private static int parseArr(String json, int pos) {
