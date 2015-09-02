@@ -3,17 +3,17 @@ import java.io.*;
 
 public class TreasureHunt {
 	public static void main(String args[]) {
-		if(args.length < 1) {
-			System.out.println("Please specify a filename");
+		if(args.length < 2) {
+			System.out.println("Please provide two parameters");
+			System.out.println("Usage: java TreasureHunt [filename] [query string]");
 			System.exit(-1);
 		}
 
-		String input;
-		String query = "dailyprogrammer";
-
 		try {
 			
-			input = readFile(args[0]);
+			String input = readFile(args[0]);
+			String query = args[1];
+
 			System.out.println(parseJSON(input, query));
 
 		} catch (Exception e) {
@@ -38,7 +38,7 @@ public class TreasureHunt {
 		String message = "";
 		
 		if(pos < 0) {
-			return "Could not find " + query + " in JSON.";
+			return "Could not find \"" + query + "\" in JSON file.";
 		}
 
 		boolean skipBracket = false;
