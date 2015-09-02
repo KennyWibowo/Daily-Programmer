@@ -33,65 +33,69 @@ public class TreasureHunt {
 	}
 	
 	private static String parseJSON(String json, String query) {
-		boolean found = false;
-		int pos = -1;
-		String dir = "";
-
-		for( int j=0; j<json.length(); j++ ) {
-			if( json.charAt(j) == query.charAt(0) ) {
-				j++;
-
-				for( int q=1; q<query.length() && j<json.length(); q++, j++ ) {
-					if( json.charAt(j) != query.charAt(q) ) {
-						break;
-					} else if( q == query.length()-1 ) {
-						found = true;
-						pos = j- (query.length()-1);
-					}
-				}
-			}
-
-			if(found) {
-				break;
-			}
-		}
-
-		if(!found) {
+		int pos = json.indexOf(query);
+		String message = "";
+		
+		if(pos < 0) {
 			return "Could not find " + query + " in JSON.";
 		}
 
-		return "Found: " + query + " at position " + pos + " (test: "+ json.substring(pos, pos + query.length())+ " )";
-	}
-}
+		boolean skipBracket = false;
+		boolean skipBrace = false;
+		int prevpos = pos;
 
-class Closures {
-	private char[] closures;
-	private boolean closed;
-	private boolean directionLeft;
-
-	public Closures(char start, char end, String direction) {
-		this.closures = new char[2];
-		this.closures[0] = start;
-		this.closures[1] = end;
-		this.closed = false;
-
-		this.directionLeft = (direction == "left");
-	}
-
-	public void closed() {
-		closed = true;
-	}
-
-	public boolean getClosed() {
-		return closed;
-	}
-
-	public String getDirection() {
-		if(directionLeft) {
-			return "left";
+		for(int j=pos; j>=0; j--) {
+			if(json.charAt(j) == '[') {
+				if(!skipBracket) {
+					// Handle array
+					message = parseArr(json, prevpos) + " -> " + message;
+					prevpos = pos;
+				} else {
+					skipBracket = false;
+				}
+			} else if(json.charAt(j) == '{') {
+				if(!skipBrace) {
+					// Handle object
+					message = parseKey(json, prevpos) + " -> " + message;
+					prevpos = pos;
+				} else {
+					skipBrace = false;
+				}
+			} else if(json.charAt(j) == '}') {
+				skipBrace = true;
+			} else if(json.charAt(j) == ']') {
+				skipBracket = true;
+			}
 		}
 
-		return "right";
+		return message;
 	}
 
+	private static String parseKey(String json, int pos) {
+		while(json.charAt(pos) != '"') pos--;
+		int start = pos;
+		
+		pos--;
+
+		while(json.charAt(pos) != '"') pos--;
+		int end = pos;
+
+		return json.substring(end, start+1);
+	}
+
+	private static int parseArr(String json, int pos) {
+		int count = 0;
+
+		while(json.charAt(pos) != '[') {
+			if(json.charAt(pos) == ']') {
+				while(json.charAt(pos) != '[') pos --;
+			}
+
+			if(json.charAt(pos) == ',')
+				count++;
+			pos--;
+		}
+
+		return  count;
+	}
 }
